@@ -45,6 +45,9 @@ header {
 }
 
 main {
+   margin: auto;
+   max-width: 1280px;
+
    & .personal-info {
       position: relative;
       padding-left: 20px;
@@ -58,9 +61,29 @@ main {
          height: 100%;
          background-color: red;
       }
-      & h2::first-letter{
-         color:red;
+
+      & h2::first-letter {
+         color: red;
          font-style: italic;
+      }
+   }
+
+   & .work {
+      .job-list {
+         list-style-type: none;
+         padding-left: 0;
+
+         & li {
+            font-style: normal;
+            font-weight: 400;
+            &::before {
+               content: "▶";
+               color: orange;
+               font-size: 0.8em;
+               font-weight: bold;
+               padding-right: 5px;
+            }
+         }
       }
    }
 
