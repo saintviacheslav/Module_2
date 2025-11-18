@@ -44,4 +44,24 @@ header {
    }
 }
 
-main {}
+main {
+   & .personal-info {
+      position: relative;
+      padding-left: 20px;
+
+      &::before {
+         content: "";
+         position: absolute;
+         left: 0;
+         top: 0;
+         width: 5px;
+         height: 100%;
+         background-color: red;
+      }
+      & h2::first-letter{
+         color:red;
+         font-style: italic;
+      }
+   }
+
+}
