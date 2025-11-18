@@ -5,6 +5,7 @@
    font-style: normal;
    font-display: swap;
 }
+
 @font-face {
    font-family: 'Montserrat Variable';
    src: url('assets/fonts/montserrat/Montserrat-Italic-VariableFont_wght.ttf') format('truetype');
@@ -12,28 +13,35 @@
    font-style: italic;
    font-display: swap;
 }
-*{
-   margin:0;
-   padding:0;
+
+* {
+   margin: 0;
+   padding: 0;
 }
+
 body {
    font-family: 'Montserrat Variable', sans-serif;
    font-weight: 900;
 }
-p{
+
+p {
    font-weight: 100;
    font-style: italic;
 }
-main{
-   & .photo-link{
+
+header {
+   & .photo-link {
       display: inline-block;
-      & .round-photo{
-         width:200px;
-         height:200px;
+
+      & .round-photo {
+         width: 200px;
+         height: 200px;
          border-radius: 50%;
-         border:5px solid black;
+         border: 5px solid black;
          object-fit: cover;
          box-sizing: border-box;
       }
    }
 }
+
+main {}
