@@ -1,0 +1,26 @@
+@font-face {
+   font-family: 'Montserrat Variable';
+   src: url('assets/fonts/montserrat/Montserrat-VariableFont_wght.ttf') format('truetype');
+   font-weight: 100 900;
+   font-style: normal;
+   font-display: swap;
+}
+@font-face {
+   font-family: 'Montserrat Variable';
+   src: url('assets/fonts/montserrat/Montserrat-Italic-VariableFont_wght.ttf') format('truetype');
+   font-weight: 100 900;
+   font-style: italic;
+   font-display: swap;
+}
+*{
+   margin:0;
+   padding:0;
+}
+body {
+   font-family: 'Montserrat Variable', sans-serif;
+   font-weight: 900;
+}
+p{
+   font-weight: 100;
+   font-style: italic;
+}
