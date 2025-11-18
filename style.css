@@ -87,4 +87,13 @@ main {
       }
    }
 
+   & .contacts{
+      & img{
+         width:24px;
+         height: 24px;
+         &:hover{
+            filter: invert(30%) sepia(90%) saturate(1000%) hue-rotate(250deg);
+         }
+      }
+   }
 }
