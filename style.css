@@ -1,0 +1,77 @@
+@font-face {
+  font-family: 'Montserrat';
+  src: url('./assets/fonts/Montserrat-VariableFont_wght.ttf') format('ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('./assets/fonts/Montserrat-Italic-VariableFont_wght.ttf') format('ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: 'Montserrat';
+  font-size: 16px;
+}
+
+.table-container {
+  margin: 0 auto;
+  width: 600px;
+  height: 400px;
+  overflow: auto;
+  text-align: center;
+}
+
+.data-table {
+  width: 600px;
+  height: 400px;
+  border: 2px solid black;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.data-table th, .data-table td {
+  font-size: 0.8rem;
+  text-align: center;
+  padding: 10px 20px;
+  border: 1px solid #ccc;
+}
+
+.data-table thead th {
+  background-color: #E0F2F1;
+  font-style: italic;
+  font-weight: 400;
+}
+
+.data-table tbody th, .data-table tbody td {
+  background-color: #FFFFFF;
+  max-width: 150px;
+}
+
+.data-table .vertical-header {
+  background-color: #E0F2F1;
+  text-align: right;
+  font-weight: bold;
+  width: 120px;
+}
+
+.data-table tbody td {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.data-table tfoot td {
+  background-color: #B2DFDB;
+  font-weight: bold;
+  font-style: italic;
+  text-align: center;
+}
