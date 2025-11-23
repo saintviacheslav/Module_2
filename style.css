@@ -1,0 +1,135 @@
+@font-face {
+  font-family: 'Montserrat';
+  src: url('./assets/fonts/Montserrat-VariableFont_wght.ttf') format('ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('./assets/fonts/Montserrat-Italic-VariableFont_wght.ttf') format('ttf');
+  font-weight: normal;
+  font-style: italic;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 16px;
+  max-width: 1440px;
+  font-family: "Montserrat";
+}
+
+header {
+  max-width: 1280px;
+  margin: 40px auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+header a {
+  text-decoration: none;
+  color: black;
+}
+
+header a:visited {
+  color: black;
+}
+
+.avatar-icon {
+  width: 2rem;
+  height: 2rem;
+  order: 3;
+}
+
+.logo-icon {
+  width: 4rem;
+  height: 4rem;
+  order: 1;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  order: 2;
+}
+
+.burger-menu {
+  display: none;
+  cursor: pointer;
+  order: 2;
+  margin-right: 15px;
+}
+
+.burger-menu img {
+    width: 2rem;
+    height: 2rem;
+}
+
+.menu-toggle {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0; 
+        width: 100%;
+        background-color: #f0f0f0; 
+        padding: 15px 20px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        z-index: 10;
+        gap: 1rem;
+    }
+    
+    .nav-links a {
+        padding: 10px 0;
+        border-bottom: 1px solid #ddd;
+    }
+    
+    .burger-menu {
+        display: block;
+    }
+    
+    #menu-toggle:checked ~ .nav-links {
+        display: flex;
+    }
+    
+    header {
+        justify-content: flex-start;
+        padding: 0 15px;
+    }
+
+    .burger-menu {
+        margin-left: auto;
+        margin-right: 10px;
+        display: block; 
+    }
+    
+    @media (max-width: 480px) { 
+        header {
+            padding: 0 8px;
+        }
+
+        .logo-icon {
+            width: 3rem;
+            height: 3rem;
+        }
+
+        .burger-menu img, .avatar-icon {
+            width: 1.5rem;
+            height: 1.5rem;
+        }
+    }
+}
