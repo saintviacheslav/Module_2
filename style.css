@@ -15,6 +15,7 @@
 * {
   padding: 0;
   margin: 0;
+  box-sizing: border-box;
 }
 
 body {
@@ -74,4 +75,125 @@ body {
   font-weight: bold;
   font-style: italic;
   text-align: center;
+}
+
+
+
+.main-form {
+    max-width: 500px;
+    margin: 40px auto;
+    padding: 30px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+fieldset {
+    border: 1px solid #1A237E;
+    border-radius: 6px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+legend {
+    font-size: 1.4em;
+    font-weight: bold;
+    color: #1A237E;
+    padding: 0 10px;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.radio-group {
+    flex-direction: column; 
+}
+
+.radio-group p {
+    margin-bottom: 10px;
+}
+
+.radio-option {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.radio-option input[type="radio"] {
+    width: auto;
+    max-width: none;
+    margin-right: 8px;
+}
+
+.checkbox-group {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+}
+
+.checkbox-group input[type="checkbox"] {
+    width: auto;
+    max-width: none;
+    margin-top: 0;
+}
+
+.main-form input:not([type="radio"]):not([type="checkbox"]), 
+.main-form select, 
+.main-form textarea {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-top: 5px;
+    caret-color: #FF5722; 
+    max-width: 440px; 
+    width: 90%; 
+}
+
+.main-form input:not([type="radio"]):not([type="checkbox"]):focus, 
+.main-form select:focus, 
+.main-form textarea:focus {
+    outline: 2px solid #00796B;
+    border-color: transparent;
+}
+
+textarea {
+    resize: horizontal; 
+    min-height: 80px;
+    max-width: 100%;
+}
+
+input[disabled] {
+    background-color: #E0E0E0;
+    color: #777;
+    cursor: not-allowed;
+}
+
+input[disabled]:hover {
+    cursor: crosshair;
+}
+
+.radio-group label, .checkbox-group label {
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+button[type="submit"] {
+    padding: 12px 20px;
+    background-color: #1A237E;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover {
+    background-color: #283593;
 }
