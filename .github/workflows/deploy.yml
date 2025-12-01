@@ -30,7 +30,8 @@ jobs:
               
               mkdir -p $STAGE_TARGET
               
-              git checkout $STAGE_BRANCH -- .
+              
+              git checkout origin/$STAGE_BRANCH -- .
               mv * $STAGE_TARGET/ 2>/dev/null || true
               rm -rf $DEPLOY_FOLDER/.git 
               
