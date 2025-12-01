@@ -15,6 +15,9 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Fetch all branches
+        run: git fetch --all --tags
+
       - name: Assemble and Deploy Pages
         id: deploy
         run: |
@@ -30,7 +33,7 @@ jobs:
             STAGE_BRANCH="stage-$i"
             STAGE_FOLDER="stage-$i"
             
-            if git branch --list "$STAGE_BRANCH" > /dev/null; then
+            if git branch -r | grep -w "origin/$STAGE_BRANCH" > /dev/null; then
               echo "Processing $STAGE_BRANCH..."
               
               mkdir -p "$STAGE_FOLDER"
@@ -44,7 +47,7 @@ jobs:
                 rmdir "$STAGE_FOLDER"
               fi
             else
-              echo "Branch $STAGE_BRANCH does not exist."
+              echo "Branch $STAGE_BRANCH does not exist on remote."
             fi
           done
 
