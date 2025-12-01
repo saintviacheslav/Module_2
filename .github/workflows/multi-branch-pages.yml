@@ -3,7 +3,7 @@ name: Deploy all branches to GitHub Pages
 on:
   push:
     branches:
-      - master
+      - main
       - stage-1
       - stage-2
       - stage-3
