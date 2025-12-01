@@ -1,0 +1,53 @@
+name: Deploy Multiple Jekyll Branches to Pages (Subdirectories)
+
+on:
+  push:
+    branches:
+      - master
+      - stage-*
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages-multi-branch"
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        branch: [master, stage-1, stage-2, stage-3, stage-4, stage-5]
+
+    steps:
+      - name: Checkout ${{ matrix.branch }} Branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ matrix.branch }} 
+          path: repo_content 
+
+      - name: Setup Ruby and dependencies
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.x'
+          bundler-cache: true
+          cache-version: 1
+
+      - name: Build Jekyll Site for ${{ matrix.branch }}
+        run: |
+          bundle exec jekyll build --source repo_content --destination _site/${{ matrix.branch }}
+        shell: bash
+        
+      - name: Deploy to GitHub Pages Subdirectory
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: ./_site/${{ matrix.branch }}
+          destination_dir: ${{ matrix.branch }}
+          keep_files: true
