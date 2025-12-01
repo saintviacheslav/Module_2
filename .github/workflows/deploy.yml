@@ -1,0 +1,57 @@
+name: Deploy Project Stages
+
+on:
+  push:
+    branches:
+      - "stage-*"
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Assemble and Deploy Pages
+        id: deploy
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+
+          git checkout gh-pages || git checkout --orphan gh-pages
+          git reset --hard
+
+          ls -A | grep -v "\.git" | xargs rm -rf 
+
+          for i in {1..5}; do
+            STAGE_BRANCH="stage-$i"
+            STAGE_FOLDER="stage-$i"
+            
+            if git branch --list "$STAGE_BRANCH" > /dev/null; then
+              echo "Processing $STAGE_BRANCH..."
+              
+              mkdir -p "$STAGE_FOLDER"
+              
+              git --work-tree="$STAGE_FOLDER" checkout "$STAGE_BRANCH" -- .
+              
+              if [ -n "$(ls -A "$STAGE_FOLDER")" ]; then
+                git add "$STAGE_FOLDER"
+              else
+                echo "Warning: $STAGE_BRANCH is empty, skipping."
+                rmdir "$STAGE_FOLDER"
+              fi
+            else
+              echo "Branch $STAGE_BRANCH does not exist."
+            fi
+          done
+
+          if ! git diff --cached --quiet; then
+            git commit -m "build from stage branches"
+            git push origin gh-pages -f
+            echo "Deployment successful!"
+          else
+            echo "No changes detected, skipping commit."
+          fi
