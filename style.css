@@ -1,0 +1,155 @@
+@font-face {
+   font-family: 'Montserrat';
+   src: url('./assets/fonts/Montserrat-VariableFont_wght.ttf') format('truetype');
+   font-weight: normal;
+   font-style: normal;
+}
+
+@font-face {
+   font-family: 'Montserrat';
+   src: url('./assets/fonts/Montserrat-Italic-VariableFont_wght.ttf') format('truetype');
+   font-weight: normal;
+   font-style: italic;
+}
+
+* {
+   padding: 0;
+   margin: 0;
+   box-sizing: border-box;
+}
+
+body {
+   font-family: 'Montserrat', sans-serif;
+   font-size: 1rem;
+   min-width: 20rem;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   min-height: 100vh;
+   background-color: #f0f0f0;
+}
+
+main {
+   max-width: 1280px;
+   margin: 0 auto;
+}
+
+@keyframes wrapper-entrance {
+   0% {
+      opacity: 0;
+      transform: translateY(-3.125rem) rotateY(0deg);
+   }
+
+   100% {
+      opacity: 1;
+      transform: translateY(0) rotateY(360deg);
+   }
+}
+
+@keyframes gray-layer-fade-out {
+   0% {
+      opacity: 1;
+   }
+
+   100% {
+      opacity: 0;
+   }
+}
+
+@keyframes image-fade-in {
+   100% {
+      transform: scale(1);
+      opacity: 1;
+   }
+}
+
+.card-wrapper {
+   animation: wrapper-entrance 2s forwards;
+   display: flex;
+   transform-style: preserve-3d;
+}
+
+.card {
+   border-radius: 0.5rem;
+   max-width: 200px;
+   display: flex;
+   flex-direction: column;
+   gap: 0.625rem;
+   padding: 0.625rem;
+   box-shadow: 0 0.625rem 1.25rem rgba(0, 0, 0, 0.25);
+   cursor: pointer;
+   overflow: hidden;
+   color: white;
+   position: relative;
+   z-index: 1;
+   isolation: isolate;
+   background-image: linear-gradient(135deg, #d68fe8, #ec14c4);
+   transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+      box-shadow 0.5s,
+      background-image 0.5s,
+      opacity 0.5s;
+}
+
+.card::before {
+   content: "";
+   position: absolute;
+   inset: 0;
+   background-image: linear-gradient(135deg, #bbb, #999);
+   z-index: -1;
+   border-radius: 0.5rem;
+   animation: gray-layer-fade-out 2s forwards;
+   pointer-events: none;
+}
+
+.card:hover {
+   transform: scale(1.1) translateY(-0.9375rem);
+   background-image: linear-gradient(135deg, #00C853, #69F0AE);
+   opacity: 0.95;
+   box-shadow: 0 0.9375rem 1.875rem rgba(0, 0, 0, 0.5);
+}
+
+.card:active {
+   transform: rotateZ(3deg) skewY(-1deg) scale(0.95);
+   background-image: linear-gradient(135deg, #FF6F00, #FFC107);
+   box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.3);
+}
+
+.card img {
+   width: 100%;
+   max-height: 180px;
+   object-fit: contain;
+   transform: scale(0);
+   opacity: 0;
+   animation: image-fade-in 0.8s 2s forwards;
+}
+
+.card h1 {
+   font-size: 2rem;
+}
+
+.card h2 {
+   font-size: 1.5rem;
+   color: #FFC107;
+}
+
+.card p {
+   font-size: 0.8rem;
+   color: rgba(255, 255, 255, 0.85);
+}
+
+.buy {
+   width: 4rem;
+   align-self: center;
+   font-family: 'Montserrat', sans-serif;
+   background-color: #00C853;
+   border-radius: 0.5rem;
+   color: white;
+   padding: 0.5rem 1rem;
+   border: none;
+   cursor: pointer;
+   transition: background-color 0.3s;
+}
+
+.buy:hover {
+   background-color: #009688;
+}
