@@ -1,0 +1,148 @@
+@font-face {
+   font-family: 'Montserrat';
+   src: url('./assets/fonts/Montserrat-VariableFont_wght.ttf') format('ttf');
+   font-weight: normal;
+   font-style: normal;
+}
+
+@font-face {
+   font-family: 'Montserrat';
+   src: url('./assets/fonts/Montserrat-Italic-VariableFont_wght.ttf') format('ttf');
+   font-weight: normal;
+   font-style: italic;
+}
+
+* {
+   padding: 0;
+   margin: 0;
+   box-sizing: border-box;
+}
+
+body {
+   font-family: 'Montserrat';
+   font-size: 1rem;
+   min-width: 320px;
+   display: grid;
+   grid-template-rows: 1fr;
+   min-height: 100vh;
+}
+
+.content-wrapper {
+   max-width: 1500px;
+   width: 100%;
+   margin: 0 auto;
+   padding: 0 15px;
+   display: grid;
+   grid-template-rows: max-content 1fr max-content;
+   grid-template-areas:
+      "header"
+      "main"
+      "footer";
+   row-gap: 1.25rem;
+}
+
+header, footer {
+   background-color: #3f51b5;
+   color: white;
+   text-align: center;
+   line-height: 3.125rem;
+   height: 3.125rem;
+   font-size: 1.25rem;
+}
+
+header {
+   grid-area: header;
+}
+
+footer {
+   grid-area: footer;
+}
+
+.main-content {
+   grid-area: main;
+   display: grid;
+   grid-template-columns: minmax(12.5rem, 25rem) 1fr;
+   gap: 1.25rem;
+}
+
+.sidebar {
+   background-color: #e8eaf6;
+   padding: 0.9375rem;
+   max-height: 50%;
+   overflow-y: auto;
+   border-radius: 0.25rem;
+   line-height: 1.4;
+   font-size: 0.875rem;
+}
+
+.sidebar h1 {
+   font-size: 1.125rem;
+   margin-bottom: 0.625rem;
+}
+
+.cards-container {
+   display: grid;
+   grid-template-columns: repeat(4, minmax(12.5rem, 1fr));
+   gap: 0.625rem;
+   align-items: stretch;
+}
+
+.card {
+   background-color: #fff;
+   border: 0.0625rem solid #c5cae9;
+   padding: 0.625rem;
+   border-radius: 0.25rem;
+   height: 100%;
+   max-height: 200px;
+   overflow: hidden;
+   line-height: 1.2;
+   font-size: 0.875rem;
+}
+
+.card h2 {
+   margin-bottom: 0.3125rem;
+   font-size: 1rem;
+}
+
+@media (max-width: 1024px) {
+
+   .main-content {
+      grid-template-columns: 1fr;
+      grid-template-areas:
+         "sidebar"
+         "cards";
+   }
+
+   .sidebar {
+      grid-area: sidebar;
+      min-width: initial;
+      max-width: 100%;
+      max-height: 100px;
+   }
+
+   .cards-container {
+      grid-template-columns: repeat(3, minmax(12.5rem, 1fr));
+   }
+}
+
+@media (max-width: 768px) {
+
+   .cards-container {
+      grid-template-columns: repeat(2, minmax(12.5rem, 1fr));
+   }
+}
+
+@media (max-width: 480px) {
+
+   .cards-container {
+      grid-template-columns: 1fr;
+   }
+
+   .content-wrapper {
+      padding: 0 0.3125rem;
+   }
+
+   .main-content {
+      gap: 0.625rem;
+   }
+}
